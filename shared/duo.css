@@ -1,0 +1,18 @@
+
+/* --- Duo game additions: mode row, CPU difficulty, lobby start row --- */
+.mode-row { display:flex; flex-wrap:wrap; align-items:center; gap:.6rem 1.1rem; margin:0 0 .75rem; position:relative; }
+.mode-row .play-switch { margin:0; }
+.difficulty { display:flex; align-items:center; }
+.difficulty span { margin-right:.55rem; font:700 .55rem "Rubik",sans-serif; letter-spacing:.14em; }
+.difficulty button { border:2px solid var(--ink); padding:.5rem .7rem; color:var(--ink); background:transparent; font:700 .55rem "Rubik",sans-serif; letter-spacing:.1em; cursor:pointer; transition:background .18s ease,color .18s ease; }
+.difficulty button + button { border-left:0; }
+.difficulty button.active, .difficulty button:hover { color:var(--cream); background:var(--brick); }
+.difficulty button:focus-visible, .play-switch button:focus-visible { outline:3px solid var(--mustard); outline-offset:2px; }
+.start-row { grid-column:1/-1; display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:.8rem; }
+.start-row .start-button { grid-column:auto; }
+@media (max-width:700px), (hover:none) and (pointer:coarse) {
+  .mode-row { gap:.5rem; }
+  .mode-row .play-switch { width:100%; }
+  .difficulty { width:100%; }
+  .difficulty button { flex:1; min-height:40px; }
+}

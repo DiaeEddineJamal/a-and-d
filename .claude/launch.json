@@ -1,0 +1,60 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "portal",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "lmogolyan-arcade",
+        "run",
+        "dev"
+      ],
+      "port": 3010
+    },
+    {
+      "name": "pong",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "mangolian-pong",
+        "run",
+        "dev"
+      ],
+      "port": 3001
+    },
+    {
+      "name": "server",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "racing-game",
+        "run",
+        "server"
+      ],
+      "port": 3000
+    },
+    {
+      "name": "puck",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "mangolian-puck",
+        "run",
+        "dev"
+      ],
+      "port": 3002
+    },
+    {
+      "name": "chefs",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "lmongolyan-chefs",
+        "run",
+        "dev"
+      ],
+      "port": 3003
+    }
+  ]
+}

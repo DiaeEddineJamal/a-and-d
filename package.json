@@ -1,32 +1,16 @@
 {
-  "name": "lmongolyan-kart",
+  "name": "lmogolyan-arcade-suite",
   "private": true,
-  "version": "1.0.0",
-  "type": "module",
-  "description": "LMONGOLYAN KART - an online arcade kart racer built with Three.js, with real-time multiplayer, downloaded audio and kart assets.",
   "scripts": {
-    "dev": "vite --host",
-    "build": "vite build",
-    "preview": "vite preview --host",
-    "typecheck": "tsc --noEmit",
-    "server": "node server/index.js",
-    "check:browser": "node tools/browser-check.mjs",
-    "check:mobile": "node tools/mobile-check.mjs",
-    "serve": "npm run build && node server/index.js",
-    "start": "node server/index.js"
-  },
-  "dependencies": {
-    "compression": "^1.8.1",
-    "express": "^5.1.0",
-    "nanoid": "^5.1.6",
-    "socket.io": "^4.8.1",
-    "socket.io-client": "^4.8.1",
-    "three": "^0.185.1"
-  },
-  "devDependencies": {
-    "@types/three": "^0.185.4",
-    "puppeteer-core": "^24.43.1",
-    "typescript": "^7.0.2",
-    "vite": "^8.2.2"
+    "dev:portal": "npm --prefix lmogolyan-arcade run dev",
+    "dev:pong": "npm --prefix mangolian-pong run dev",
+    "dev:racing": "npm --prefix racing-game run dev",
+    "server:racing": "npm --prefix racing-game run server",
+    "build": "npm --prefix lmogolyan-arcade run build && npm --prefix mangolian-pong run build && npm --prefix mangolian-puck run build && npm --prefix lmongolyan-chefs run build && npm --prefix racing-game run build",
+    "lint": "npm --prefix lmogolyan-arcade run lint && npm --prefix mangolian-pong run lint && npm --prefix mangolian-puck run lint && npm --prefix lmongolyan-chefs run lint",
+    "dev:puck": "npm --prefix mangolian-puck run dev",
+    "dev:chefs": "npm --prefix lmongolyan-chefs run dev",
+    "sync:cores": "node tools/sync-cores.mjs",
+    "prepare:art": "python tools/prepare-sprites.py"
   }
 }
