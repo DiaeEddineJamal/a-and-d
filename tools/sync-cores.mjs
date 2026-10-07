@@ -6,18 +6,18 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const copies = [
-  ['racing-game/server/games/puck-core.mjs', 'mangolian-puck/src/game/puck-core.mjs'],
-  ['racing-game/server/games/kitchen-core.mjs', 'lmongolyan-chefs/src/game/kitchen-core.mjs'],
-  ['shared/duo-room.ts', 'mangolian-puck/src/game/duo-room.ts'],
-  ['shared/duo-room.ts', 'lmongolyan-chefs/src/game/duo-room.ts'],
-  ['shared/duo-lobby.tsx', 'mangolian-puck/src/game/duo-lobby.tsx'],
-  ['shared/duo-lobby.tsx', 'lmongolyan-chefs/src/game/duo-lobby.tsx'],
-  ['shared/sprite-bank.ts', 'mangolian-puck/src/game/sprite-bank.ts'],
-  ['shared/sprite-bank.ts', 'lmongolyan-chefs/src/game/sprite-bank.ts'],
-  ['shared/sprite-bank.ts', 'mangolian-pong/src/game/sprite-bank.ts'],
-  ['shared/board-view.ts', 'mangolian-pong/src/game/board-view.ts'],
-  ['shared/board-view.ts', 'mangolian-puck/src/game/board-view.ts'],
-  ['shared/board-view.ts', 'lmongolyan-chefs/src/game/board-view.ts'],
+  ['a-and-d-kart/server/games/puck-core.mjs', 'a-and-d-puck/src/game/puck-core.mjs'],
+  ['a-and-d-kart/server/games/kitchen-core.mjs', 'a-and-d-chefs/src/game/kitchen-core.mjs'],
+  ['shared/duo-room.ts', 'a-and-d-puck/src/game/duo-room.ts'],
+  ['shared/duo-room.ts', 'a-and-d-chefs/src/game/duo-room.ts'],
+  ['shared/duo-lobby.tsx', 'a-and-d-puck/src/game/duo-lobby.tsx'],
+  ['shared/duo-lobby.tsx', 'a-and-d-chefs/src/game/duo-lobby.tsx'],
+  ['shared/sprite-bank.ts', 'a-and-d-puck/src/game/sprite-bank.ts'],
+  ['shared/sprite-bank.ts', 'a-and-d-chefs/src/game/sprite-bank.ts'],
+  ['shared/sprite-bank.ts', 'a-and-d-pong/src/game/sprite-bank.ts'],
+  ['shared/board-view.ts', 'a-and-d-pong/src/game/board-view.ts'],
+  ['shared/board-view.ts', 'a-and-d-puck/src/game/board-view.ts'],
+  ['shared/board-view.ts', 'a-and-d-chefs/src/game/board-view.ts'],
 ];
 for (const [from, to] of copies) {
   fs.mkdirSync(path.dirname(path.join(root, to)), { recursive: true });
@@ -29,7 +29,7 @@ for (const [from, to] of copies) {
 // are kept as the last blocks of each game's globals.css; replace them with the current copies.
 const MARK = '/* ===== Phone layout (shared/mobile-board.css)';
 const mobileCss = fs.readFileSync(path.join(root, 'shared/mobile-board.css'), 'utf8').trimEnd() + '\n\n' + fs.readFileSync(path.join(root, 'shared/ad-theme.css'), 'utf8');
-for (const app of ['mangolian-pong', 'mangolian-puck', 'lmongolyan-chefs']) {
+for (const app of ['a-and-d-pong', 'a-and-d-puck', 'a-and-d-chefs']) {
   const file = path.join(root, app, 'src/app/globals.css');
   const css = fs.readFileSync(file, 'utf8');
   const at = css.indexOf(MARK);

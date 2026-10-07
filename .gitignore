@@ -6,12 +6,12 @@ node_modules/
 # and a 512MB container should not be running rollup on every wake either.
 # Everything vite copies in from public/ stays out of git - the server serves
 # public/ directly, and Vercel / Pages run their own build.
-racing-game/dist/*
-!racing-game/dist/index.html
-racing-game/dist/assets/*
-!racing-game/dist/assets/
-!racing-game/dist/assets/index-*.js
-!racing-game/dist/assets/index-*.css
+a-and-d-kart/dist/*
+!a-and-d-kart/dist/index.html
+a-and-d-kart/dist/assets/*
+!a-and-d-kart/dist/assets/
+!a-and-d-kart/dist/assets/index-*.js
+!a-and-d-kart/dist/assets/index-*.css
 
 # local env / secrets
 .env

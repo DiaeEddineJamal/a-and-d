@@ -3,7 +3,7 @@
  *
  * SHARED FILE. The server and the browser game run this exact module, so the
  * puck the server simulates and the puck each browser predicts behave the
- * same. Edit it here, in racing-game/server/games/, then run
+ * same. Edit it here, in a-and-d-kart/server/games/, then run
  * `npm run sync:cores` from the repository root to copy it into the game.
  */
 

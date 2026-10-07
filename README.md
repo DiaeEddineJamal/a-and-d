@@ -2,11 +2,11 @@
 
 This repository is organized as independent applications that share one room server:
 
-- `lmogolyan-arcade/`: Next.js arcade portal (http://localhost:3010)
-- `mangolian-pong/`: Pong, with 2-player, vs CPU and online modes (http://localhost:3001)
-- `mangolian-puck/`: air hockey, with 2-player, vs CPU and online modes (http://localhost:3002)
-- `lmongolyan-chefs/`: co-op cooking, with 2 chefs, a CPU chef, or online (http://localhost:3003)
-- `racing-game/`: Vite kart racer, plus the shared Socket.IO room server for every game
+- `a-and-d-arcade/`: Next.js arcade portal (http://localhost:3010)
+- `a-and-d-pong/`: Pong, with 2-player, vs CPU and online modes (http://localhost:3001)
+- `a-and-d-puck/`: air hockey, with 2-player, vs CPU and online modes (http://localhost:3002)
+- `a-and-d-chefs/`: co-op cooking, with 2 chefs, a CPU chef, or online (http://localhost:3003)
+- `a-and-d-kart/`: Vite kart racer, plus the shared Socket.IO room server for every game
 
 ## Run locally
 
@@ -29,7 +29,7 @@ The shared room server runs at `http://localhost:3000`. The games reach it throu
 ## Shared code
 
 Air hockey physics (`puck-core.mjs`) and the kitchen rules with the CPU chef
-(`kitchen-core.mjs`) live in `racing-game/server/games/`, because the server runs
+(`kitchen-core.mjs`) live in `a-and-d-kart/server/games/`, because the server runs
 them too. The browser room hook and lobby live in `shared/`. After editing any of
 them, copy them into the games:
 

@@ -1,6 +1,6 @@
 "use client";
 /**
- * SHARED FILE: the browser half of racing-game/server/games/duo-rooms.mjs.
+ * SHARED FILE: the browser half of a-and-d-kart/server/games/duo-rooms.mjs.
  * Canonical copy lives in /shared; `npm run sync:cores` copies it into each
  * duo game. Handles the private-room lobby, reconnecting, resuming after a
  * reload, and a clock estimate so snapshots can be aged correctly.

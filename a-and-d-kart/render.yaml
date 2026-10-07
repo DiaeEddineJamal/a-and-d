@@ -7,7 +7,7 @@
 # way: build with `npm ci && npm run build`, start with `node server/index.js`.
 services:
   - type: web
-    name: lmongolyan-kart
+    name: a-and-d-kart
     runtime: node
     plan: free
     buildCommand: npm ci && npm run build

@@ -1,6 +1,6 @@
-[submodule "lmogolyan-arcade"]
-	path = lmogolyan-arcade
-	url = https://github.com/DiaeEddineJamal/lmogolyan-arcade.git
-[submodule "mangolian-pong"]
-	path = mangolian-pong
-	url = https://github.com/DiaeEddineJamal/mangolian-pong.git
+[submodule "a-and-d-arcade"]
+	path = a-and-d-arcade
+	url = https://github.com/DiaeEddineJamal/a-and-d-arcade.git
+[submodule "a-and-d-pong"]
+	path = a-and-d-pong
+	url = https://github.com/DiaeEddineJamal/a-and-d-pong.git

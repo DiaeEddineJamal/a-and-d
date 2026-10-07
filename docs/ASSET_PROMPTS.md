@@ -55,7 +55,7 @@ The portal crops each cover to a tall box front and prints the game title over t
 bottom of it in code. So: **no text in the image**, main subject in the **middle half**
 of the width, and a calmer **bottom quarter**.
 
-Folder: `lmogolyan-arcade/public/`
+Folder: `a-and-d-arcade/public/`
 
 ### Mangolian Puck cover → `puck-cover-box-art.png` (landscape)
 
@@ -108,7 +108,7 @@ the set to feel even more uniform. Same size and rules as above; save over
 
 ## 2. Mangolian Puck (air hockey)
 
-Folder: `mangolian-puck/public/sprites/`
+Folder: `a-and-d-puck/public/sprites/`
 
 The code always draws the table **markings** (centre line, circles, goals) itself so
 they line up with the physics. The surface image is just the playing surface.
@@ -187,7 +187,7 @@ confetti scattered wide"*. Frame 4: *"the rays fading and only scattered confett
 
 ## 3. Lmongolyan Chefs (co-op cooking)
 
-Folder: `lmongolyan-chefs/public/sprites/`
+Folder: `a-and-d-chefs/public/sprites/`
 
 The kitchen is a top-down grid, so everything must be seen from **straight above**
 (no perspective, no side view). Tiles are square and fill the whole image.
@@ -337,7 +337,7 @@ colours, bold ink details, subtle halftone grain, no text, no characters."*
 
 ## 4. Mangolian Pong
 
-Folder: `mangolian-pong/public/sprites/`
+Folder: `a-and-d-pong/public/sprites/`
 
 The code draws the centre line and the Film Frenzy storm effect on top of the court.
 
@@ -402,10 +402,10 @@ change the look the most.
 
 | Game | Folder | Files |
 |---|---|---|
-| Portal | `lmogolyan-arcade/public/` | ★ `puck-cover-box-art`, ★ `chefs-cover-box-art` · optional refresh: `pong-cover-box-art`, `kart-cover-box-art` |
-| Puck | `mangolian-puck/public/sprites/` | ★ `table_surface`, ★ `mallet_teal`, `mallet_teal_hit`, ★ `puck`, `puck_spin_1-4`, `fx_hit_1-4`, `fx_goal_1-4` |
-| Chefs | `lmongolyan-chefs/public/sprites/` | ★ `chef_teal`, `chef_teal_idle_1-2`, ★ `chef_teal_walk_1-4`, `chef_teal_carry_1-4`, `chef_teal_chop_1-3` · ★ 9 food files, `tomato_cut`, `lettuce_cut`, 4 `recipe_…` icons · ★ 7 tile files · `fx_sizzle_1-3`, `fx_smoke_1-3`, `fx_chop_1-3`, `fx_serve_1-4` |
-| Pong | `mangolian-pong/public/sprites/` | `court`, ★ `paddle_teal`, `paddle_teal_hit`, ★ `ball`, `ball_spin_1-4`, `fx_hit_1-4`, `fx_storm_1-3` |
+| Portal | `a-and-d-arcade/public/` | ★ `puck-cover-box-art`, ★ `chefs-cover-box-art` · optional refresh: `pong-cover-box-art`, `kart-cover-box-art` |
+| Puck | `a-and-d-puck/public/sprites/` | ★ `table_surface`, ★ `mallet_teal`, `mallet_teal_hit`, ★ `puck`, `puck_spin_1-4`, `fx_hit_1-4`, `fx_goal_1-4` |
+| Chefs | `a-and-d-chefs/public/sprites/` | ★ `chef_teal`, `chef_teal_idle_1-2`, ★ `chef_teal_walk_1-4`, `chef_teal_carry_1-4`, `chef_teal_chop_1-3` · ★ 9 food files, `tomato_cut`, `lettuce_cut`, 4 `recipe_…` icons · ★ 7 tile files · `fx_sizzle_1-3`, `fx_smoke_1-3`, `fx_chop_1-3`, `fx_serve_1-4` |
+| Pong | `a-and-d-pong/public/sprites/` | `court`, ★ `paddle_teal`, `paddle_teal_hit`, ★ `ball`, `ball_spin_1-4`, `fx_hit_1-4`, `fx_storm_1-3` |
 
 All filenames end in `.png`. Brick versions (`chef_brick…`, `mallet_brick…`,
 `paddle_brick…`) are optional overrides.
@@ -425,21 +425,21 @@ and docs/ASSET_PROMPTS.md in the repository.
 
 ## What exists
 A monorepo with independent apps that share one real-time server:
-- lmogolyan-arcade/ : Next.js 16 portal (port 3010). A "shelf" of 3D game boxes; data is
+- a-and-d-arcade/ : Next.js 16 portal (port 3010). A "shelf" of 3D game boxes; data is
   the `games` array in src/app/page.tsx. Covers live in public/; puck/chefs covers are
   picked automatically: `<name>.png` if present, else the stand-in `<name>.svg`.
-- mangolian-pong/ : Pong (port 3001). Modes: 2 players, vs CPU (easy/normal/hard), online.
-- mangolian-puck/ : air hockey (port 3002). Same three modes.
-- lmongolyan-chefs/ : co-op cooking (port 3003). Modes: 2 chefs, with a CPU chef, online.
+- a-and-d-pong/ : Pong (port 3001). Modes: 2 players, vs CPU (easy/normal/hard), online.
+- a-and-d-puck/ : air hockey (port 3002). Same three modes.
+- a-and-d-chefs/ : co-op cooking (port 3003). Modes: 2 chefs, with a CPU chef, online.
   Difficulty here is kitchen pace (order rate and patience).
-- racing-game/ : Vite + Three.js kart racer AND the Socket.IO server (server/index.js,
+- a-and-d-kart/ : Vite + Three.js kart racer AND the Socket.IO server (server/index.js,
   port 3000) that hosts rooms for every game.
 
 ## Architecture rules (do not break these)
 1. Shared logic has ONE source of truth. Edit only these originals, then run
    `npm run sync:cores` from the repo root, which copies them into each game's src/game/:
-   - racing-game/server/games/puck-core.mjs   (air hockey physics; server + browser)
-   - racing-game/server/games/kitchen-core.mjs (kitchen rules, recipes, CPU chef planner)
+   - a-and-d-kart/server/games/puck-core.mjs   (air hockey physics; server + browser)
+   - a-and-d-kart/server/games/kitchen-core.mjs (kitchen rules, recipes, CPU chef planner)
    - shared/duo-room.ts    (browser room hook: lobby, reconnect, resume, clock sync)
    - shared/duo-lobby.tsx  (mode switch, difficulty picker, private-room lobby UI)
    - shared/sprite-bank.ts (optional art loader, animation frames, effects)
@@ -451,7 +451,7 @@ A monorepo with independent apps that share one real-time server:
    uprightOverlay and convert touches with pointerToBoard / screenDirToBoard.
 2. Online model. Rooms are two seats keyed by a per-tab token (sessionStorage), not by
    socket id, so a dropped phone keeps its seat for 45 s and the match pauses
-   (racing-game/server/games/duo-rooms.mjs). Pong has its own equivalent inside
+   (a-and-d-kart/server/games/duo-rooms.mjs). Pong has its own equivalent inside
    server/index.js.
    - Pong: server runs the ball; each browser owns its paddle and sends its position
      (`pong:paddle`); clients extrapolate the ball with server-time-stamped snapshots.
@@ -481,7 +481,7 @@ the kart game). Before finishing any change run, in each app you touched:
 Test online play with two browser tabs (host creates a room, guest joins with the code).
 
 ## Deploying
-The server (racing-game) must be redeployed whenever server/games/* or server/index.js
+The server (a-and-d-kart) must be redeployed whenever server/games/* or server/index.js
 changes; the Pong/Puck/Chefs apps and the server must be deployed together when the
 network protocol changes. Each game app needs NEXT_PUBLIC_RACING_SERVER_URL and
 NEXT_PUBLIC_ARCADE_URL; the portal needs NEXT_PUBLIC_PONG_URL, NEXT_PUBLIC_RACING_URL,

@@ -2,7 +2,7 @@
  * Lmongolyan Chefs: kitchen rules, recipes and the CPU chef.
  *
  * SHARED FILE. The server and the browser game run this exact module. Edit it
- * here, in racing-game/server/games/, then run `npm run sync:cores` from the
+ * here, in a-and-d-kart/server/games/, then run `npm run sync:cores` from the
  * repository root to copy it into the game.
  *
  * The kitchen is a grid. Chefs walk on floor tiles and work the tile they
