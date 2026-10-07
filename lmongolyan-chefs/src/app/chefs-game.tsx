@@ -5,7 +5,7 @@ import { KITCHEN, LAYOUT, RECIPES, createBot, createKitchen, interact, moveChef,
 import { useDuoRoom } from "../game/duo-room";
 import { DifficultyPicker, DuoLobby, ModeSwitch, type Difficulty, type PlayMode } from "../game/duo-lobby";
 import { createSpriteBank, drawFx, spawnFx, type Fx, type SpriteBank } from "../game/sprite-bank";
-import { applyView, screenDirToBoard, screenSize, uprightOverlay, uprightText, usePortrait, type BoardView } from "../game/board-view";
+import { applyView, screenDirToBoard, screenSize, themeFont, uprightOverlay, uprightText, usePortrait, type BoardView } from "../game/board-view";
 
 type Kitchen = ReturnType<typeof createKitchen>;
 type Item = string | { plate: string[] } | null;
@@ -88,7 +88,7 @@ function paintKitchen(ctx: CanvasRenderingContext2D, sprites: SpriteBank) {
     }
     if (ch === "W") {
       ctx.fillStyle = "#a44f39"; ctx.fillRect(x + 3, y + 3, T - 6, T - 10);
-      ctx.fillStyle = "#f2e8ca"; ctx.font = "700 11px Rubik, sans-serif"; ctx.textAlign = "center"; ctx.fillText("PASS", x + T / 2, y + T - 16);
+      ctx.fillStyle = "#f2e8ca"; ctx.font = `600 11px ${themeFont("mono")}`; ctx.textAlign = "center"; ctx.fillText("PASS", x + T / 2, y + T - 16);
       ctx.fillStyle = "#c3973a"; ctx.beginPath(); ctx.arc(x + T / 2, y + 24, 10, Math.PI, 0); ctx.fill(); ctx.fillRect(x + T / 2 - 13, y + 24, 26, 3);
     }
     if (ch === "X") { ctx.fillStyle = "#3b3a37"; ctx.beginPath(); ctx.arc(x + T / 2, y + T / 2 - 3, 20, 0, Math.PI * 2); ctx.fill(); ctx.fillStyle = "#1d1c1a"; ctx.beginPath(); ctx.arc(x + T / 2, y + T / 2 - 3, 14, 0, Math.PI * 2); ctx.fill(); }
@@ -300,7 +300,7 @@ export function ChefsGame({ sprites: files }: { sprites: string[] }) {
         // Chef art is drawn facing down; turn it toward where the chef faces.
         ctx.save(); ctx.translate(x, y); ctx.rotate(Math.atan2(fy, fx) - Math.PI / 2); ctx.drawImage(art, -30, -30, 60, 60); ctx.restore();
         if (chef.holding) drawItem(ctx, chef.holding as Item, x + fx * 24, y + fy * 22 - 4, 30, sprites);
-        if (tag) uprightText(ctx, boardView.current, dpr, tag, x, y, "700 12px Rubik, sans-serif", "#201b16");
+        if (tag) uprightText(ctx, boardView.current, dpr, tag, x, y, `600 12px ${themeFont("mono")}`, "#201b16");
         return;
       }
       ctx.fillStyle = seat === 0 ? "#567b78" : "#a44f39"; ctx.beginPath(); ctx.arc(x, y + 2, 21, 0, Math.PI * 2); ctx.fill();
@@ -312,7 +312,7 @@ export function ChefsGame({ sprites: files }: { sprites: string[] }) {
       for (const side of [-1, 1]) { ctx.beginPath(); ctx.arc(x + fx * 7 + (fy !== 0 ? side * 5 : 0), y + 3 + fy * 5 + (fx !== 0 ? side * 4 : 0), 2.2, 0, Math.PI * 2); ctx.fill(); }
       if (chef.holding) drawItem(ctx, chef.holding as Item, x + fx * 22, y + fy * 20 - 4, 30, sprites);
       if (chef.chopping) { ctx.strokeStyle = "#f2e8ca"; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x + fx * 28 - 6, y + fy * 28 - 8); ctx.lineTo(x + fx * 28 + 6, y + fy * 28 + 2); ctx.stroke(); }
-      if (tag) uprightText(ctx, boardView.current, dpr, tag, x, y, "700 12px Rubik, sans-serif", "#201b16");
+      if (tag) uprightText(ctx, boardView.current, dpr, tag, x, y, `600 12px ${themeFont("mono")}`, "#201b16");
     };
 
     const draw = (overlay: string | null, you: number | null) => {

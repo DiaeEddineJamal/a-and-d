@@ -11,9 +11,9 @@ export default function Home() {
   return (
     <main className="game-page">
       <header className="game-topbar">
-        <a className="back-link" href={process.env.NEXT_PUBLIC_ARCADE_URL ?? "http://localhost:3010"}>← A&D ARCADE</a>
-        <h1 className="game-brand">LMONGOLYAN <span>CHEFS</span></h1>
-        <span className="back-link">CABINET 04</span>
+        <a className="back-link" href={process.env.NEXT_PUBLIC_ARCADE_URL ?? "http://localhost:3010"}>← A&amp;D Arcade</a>
+        <h1 className="game-brand">A&amp;D <span>Chefs</span></h1>
+        <span className="back-link">Cabinet 04</span>
       </header>
       <ChefsGame sprites={spriteFiles()} />
     </main>

@@ -25,14 +25,14 @@ for (const [from, to] of copies) {
   console.log(`${from} -> ${to}`);
 }
 
-// The phone layout lives in shared/mobile-board.css and is kept as the last
-// block of each game's globals.css; replace that block with the current copy.
+// The phone layout (shared/mobile-board.css) and then the A&D theme (shared/ad-theme.css)
+// are kept as the last blocks of each game's globals.css; replace them with the current copies.
 const MARK = '/* ===== Phone layout (shared/mobile-board.css)';
-const mobileCss = fs.readFileSync(path.join(root, 'shared/mobile-board.css'), 'utf8');
+const mobileCss = fs.readFileSync(path.join(root, 'shared/mobile-board.css'), 'utf8').trimEnd() + '\n\n' + fs.readFileSync(path.join(root, 'shared/ad-theme.css'), 'utf8');
 for (const app of ['mangolian-pong', 'mangolian-puck', 'lmongolyan-chefs']) {
   const file = path.join(root, app, 'src/app/globals.css');
   const css = fs.readFileSync(file, 'utf8');
   const at = css.indexOf(MARK);
   fs.writeFileSync(file, `${(at < 0 ? css : css.slice(0, at)).trimEnd()}\n${mobileCss}`);
-  console.log(`shared/mobile-board.css -> ${app}/src/app/globals.css`);
+  console.log(`shared/mobile-board.css + ad-theme.css -> ${app}/src/app/globals.css`);
 }

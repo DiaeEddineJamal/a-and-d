@@ -5,7 +5,7 @@ import { PUCK, chaseMallet, clamp, clearMallet, freshPuck, homeMallet, servePuck
 import { useDuoRoom } from "../game/duo-room";
 import { DifficultyPicker, DuoLobby, ModeSwitch, type Difficulty, type PlayMode } from "../game/duo-lobby";
 import { createSpriteBank, drawFx, spawnFx, type Fx } from "../game/sprite-bank";
-import { applyView, pointerToBoard, screenSize, uprightOverlay, uprightText, usePortrait, type BoardView } from "../game/board-view";
+import { applyView, pointerToBoard, screenSize, themeFont, uprightOverlay, uprightText, usePortrait, type BoardView } from "../game/board-view";
 
 type Body = { x: number; y: number; vx: number; vy: number };
 type Snap = number[];
@@ -255,14 +255,14 @@ export function PuckGame({ sprites: files }: { sprites: string[] }) {
       const art = (struck && sprites.get(`${name}_hit`)) || sprites.get(name);
       if (art) {
         ctx.drawImage(art, m.x - malletR, m.y - malletR, malletR * 2, malletR * 2);
-        if (label) uprightText(ctx, view.current, dpr, label, m.x, m.y, "700 14px Rubik, sans-serif", "#f2e8ca");
+        if (label) uprightText(ctx, view.current, dpr, label, m.x, m.y, `600 14px ${themeFont("mono")}`, "#f2e8ca");
         return;
       }
       ctx.fillStyle = seat === 0 ? "#567b78" : "#a44f39"; ctx.beginPath(); ctx.arc(m.x, m.y, malletR, 0, Math.PI * 2); ctx.fill();
       ctx.fillStyle = seat === 0 ? "#8fc4bb" : "#dc7a5c"; ctx.beginPath(); ctx.arc(m.x, m.y, malletR - 8, 0, Math.PI * 2); ctx.fill();
       ctx.fillStyle = seat === 0 ? "#3f5f5c" : "#80392a"; ctx.beginPath(); ctx.arc(m.x, m.y, 15, 0, Math.PI * 2); ctx.fill();
       ctx.fillStyle = "rgba(255,248,230,.45)"; ctx.beginPath(); ctx.arc(m.x - 5, m.y - 6, 6, 0, Math.PI * 2); ctx.fill();
-      if (label) uprightText(ctx, view.current, dpr, label, m.x, m.y, "700 14px Rubik, sans-serif", "#f2e8ca");
+      if (label) uprightText(ctx, view.current, dpr, label, m.x, m.y, `600 14px ${themeFont("mono")}`, "#f2e8ca");
     };
     const draw = (overlay: string | null, youSeat: number | null) => {
       const p = puck.current, m = match.current, n = net.current;
@@ -291,11 +291,11 @@ export function PuckGame({ sprites: files }: { sprites: string[] }) {
       drawFx(ctx, sprites, fx.current, performance.now());
       if (m.flash > 0) {
         const px = Math.round(Math.min(64, screenSize(v).w / 7));
-        uprightText(ctx, v, dpr, m.flashText, W / 2, H / 2 - 36, `${px}px Bungee, sans-serif`, `rgba(242,232,202,${Math.min(1, m.flash) * 0.9})`);
+        uprightText(ctx, v, dpr, m.flashText, W / 2, H / 2 - 36, `600 ${px}px ${themeFont("serif")}`, `rgba(242,232,202,${Math.min(1, m.flash) * 0.9})`);
       }
       if (m.hold > 0.05 && m.flashText) {
         const px = Math.round(Math.min(72, screenSize(v).w / 6));
-        uprightText(ctx, v, dpr, String(Math.ceil(m.hold)), W / 2, H / 2 + 48, `${px}px Bungee, sans-serif`, "rgba(242,232,202,.95)");
+        uprightText(ctx, v, dpr, String(Math.ceil(m.hold)), W / 2, H / 2 + 48, `600 ${px}px ${themeFont("serif")}`, "rgba(242,232,202,.95)");
       }
       if (overlay) uprightOverlay(ctx, v, dpr, [overlay]);
     };

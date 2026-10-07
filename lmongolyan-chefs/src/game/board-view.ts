@@ -75,17 +75,23 @@ export function uprightText(ctx: CanvasRenderingContext2D, v: BoardView, dpr: nu
   ctx.restore();
 }
 
+/** The portal's fonts, loaded by next/font under hashed names: read them from the CSS variables. */
+export function themeFont(role: "serif" | "mono") {
+  const name = typeof document === "undefined" ? "" : getComputedStyle(document.documentElement).getPropertyValue(role === "serif" ? "--font-serif" : "--font-plex").trim();
+  return name || (role === "serif" ? "Georgia, serif" : "Consolas, monospace");
+}
+
 /** Full-board dim overlay with a centred upright message (one or more lines). */
 export function uprightOverlay(ctx: CanvasRenderingContext2D, v: BoardView, dpr: number, lines: string[], color = "#f2e8ca") {
   const s = screenSize(v);
   ctx.save();
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  ctx.fillStyle = "rgba(32,27,22,.78)"; ctx.fillRect(0, 0, s.w, s.h);
+  ctx.fillStyle = "rgba(20,20,18,.8)"; ctx.fillRect(0, 0, s.w, s.h);
   ctx.fillStyle = color; ctx.textAlign = "center"; ctx.textBaseline = "middle";
   // Scale the banner to whichever side of the screen is shorter.
   const big = Math.round(Math.min(44, s.w / 12));
   lines.forEach((line, i) => {
-    ctx.font = i === 0 ? `${big}px Bungee, sans-serif` : `700 ${Math.round(big * 0.46)}px Rubik, sans-serif`;
+    ctx.font = i === 0 ? `600 ${big}px ${themeFont("serif")}` : `500 ${Math.round(big * 0.42)}px ${themeFont("mono")}`;
     ctx.fillText(line, s.w / 2, s.h / 2 + (i - (lines.length - 1) / 2) * big * 1.1);
   });
   ctx.restore();
