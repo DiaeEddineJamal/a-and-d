@@ -3,14 +3,13 @@
   "configurations": [
     {
       "name": "portal",
-      "runtimeExecutable": "npm",
+      "runtimeExecutable": "cmd",
       "runtimeArgs": [
-        "--prefix",
-        "a-and-d-arcade",
-        "run",
-        "dev"
+        "/c",
+        "cd a-and-d-arcade && npx next dev"
       ],
-      "port": 3010
+      "port": 3010,
+      "autoPort": true
     },
     {
       "name": "pong",
