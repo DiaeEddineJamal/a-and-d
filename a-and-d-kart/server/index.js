@@ -18,6 +18,7 @@ import compression from 'compression';
 import { Server } from 'socket.io';
 import { attachPuck } from './games/puck.mjs';
 import { attachChefs } from './games/chefs.mjs';
+import { attachYoutube } from './youtube.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -354,6 +355,7 @@ function leaveRoom(socket) {
 const app = express();
 app.use(compression());
 app.get('/healthz', (_req, res) => res.json({ ok: true, racingRooms: rooms.size, pongRooms: pongRooms.size, puckRooms: puckRooms.rooms.size, chefRooms: chefRooms.rooms.size }));
+attachYoutube(app);
 app.get('/api/leaderboard/:trackId', (req, res) => {
   res.json({ trackId: req.params.trackId, rows: leaderboard[req.params.trackId] ?? [] });
 });
