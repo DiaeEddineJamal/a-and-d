@@ -8,7 +8,7 @@ const plex = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500", "600"], 
 const term = VT323({ subsets: ["latin"], weight: "400", variable: "--font-term", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Lmongolyan Chefs",
+  title: "A&D Chefs",
   description: "A co-op cooking game for two: same screen, with a CPU chef, or online with a room code.",
 };
 

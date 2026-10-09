@@ -437,7 +437,7 @@ export function PuckGame({ sprites: files }: { sprites: string[] }) {
       </div>
       {showBoard
         ? <div className="board-wrap" style={{ "--board-ratio": portrait ? H / W : W / H, "--chrome": "172px", "--chrome-land": "118px", "--rails": "2rem" } as React.CSSProperties}>
-          <canvas className="game-canvas" ref={setCanvasEl} width={W} height={H} style={{ aspectRatio: portrait ? `${H} / ${W}` : `${W} / ${H}` }} aria-label="Mangolian Puck air hockey table" {...boardProps} />
+          <canvas className="game-canvas" ref={setCanvasEl} width={W} height={H} style={{ aspectRatio: portrait ? `${H} / ${W}` : `${W} / ${H}` }} aria-label="A&D Puck air hockey table" {...boardProps} />
         </div>
         : <DuoLobby room={room} seatNames={SEAT_NAMES} onStart={() => room.start()} />}
       <div className="game-bottom">

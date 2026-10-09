@@ -40,7 +40,7 @@ function boot(): void {
     showFatal(
       app,
       'WEBGL2 REQUIRED',
-      'Lmongolyan Kart needs a browser with WebGL 2 and hardware acceleration enabled. ' +
+      'A&D Kart needs a browser with WebGL 2 and hardware acceleration enabled. ' +
         'Try the latest Chrome, Edge, Firefox or Safari, and make sure GPU acceleration is switched on.',
     );
     return;

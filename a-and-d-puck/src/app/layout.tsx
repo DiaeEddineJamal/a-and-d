@@ -8,7 +8,7 @@ const plex = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500", "600"], 
 const term = VT323({ subsets: ["latin"], weight: "400", variable: "--font-term", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Mangolian Puck",
+  title: "A&D Puck",
   description: "Air hockey for two: same screen, against the CPU, or online with a room code.",
 };
 

@@ -418,7 +418,7 @@ kbd {
 }
 
 .logo-word-0 {
-  /* "LMONGOLYAN" is ten characters; at the shared size it runs off a laptop screen. */
+  /* the first logo word sits a size below the second */
   font-size: clamp(38px, 5.6vw, 82px);
   letter-spacing: 0.02em;
 }

@@ -560,7 +560,7 @@ export function ChefsGame({ sprites: files }: { sprites: string[] }) {
               </li>
             ))}
           </ol>
-          <canvas className="game-canvas" ref={setCanvasEl} width={W} height={H} style={{ aspectRatio: portrait ? `${H} / ${W}` : `${W} / ${H}` }} aria-label="Lmongolyan Chefs kitchen" {...boardTouch} />
+          <canvas className="game-canvas" ref={setCanvasEl} width={W} height={H} style={{ aspectRatio: portrait ? `${H} / ${W}` : `${W} / ${H}` }} aria-label="A&D Chefs kitchen" {...boardTouch} />
           {[0, 1].map((seat) => <div key={seat} className={`stick-ghost stick-ghost--${seat === 0 ? "teal" : "brick"}`} ref={(el) => { stickGhosts.current[seat] = el; }} aria-hidden="true"><span /></div>)}
           {pads}
         </div>
