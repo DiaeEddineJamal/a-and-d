@@ -30,6 +30,8 @@ export type NetStatus = 'offline' | 'connecting' | 'online' | 'error';
  * is: `VITE_GAME_SERVER=https://your-server.example npm run build`.
  */
 const SERVER_URL = (import.meta.env.VITE_GAME_SERVER ?? '').trim().replace(/\/$/, '');
+// The free host puts the server to sleep when idle: wake it while the player is still in the menus.
+fetch(`${SERVER_URL}/socket.io/?EIO=4&transport=polling`, { mode: 'no-cors' }).catch(() => {});
 
 /** True when the page itself is served from a machine that could be running the server. */
 function pageIsLocal(): boolean {

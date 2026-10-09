@@ -15,6 +15,9 @@ type Reply = { room?: RoomInfo; seat?: number; error?: string };
 type Handlers<S> = { onSnapshot: (snap: S) => void; onStart?: () => void };
 
 const SERVER = process.env.NEXT_PUBLIC_RACING_SERVER_URL ?? "http://localhost:3000";
+// The free host puts the server to sleep when idle: wake it as soon as the game opens, not when Online is pressed.
+if (typeof window !== "undefined") fetch(`${SERVER}/socket.io/?EIO=4&transport=polling`, { mode: "no-cors" }).catch(() => {});
+const WAKING = "Waking up the arcade server… it naps when nobody is playing. This can take up to a minute.";
 const store = {
   get: (key: string) => { try { return sessionStorage.getItem(key); } catch { return null; } },
   set: (key: string, value: string | null) => {
@@ -91,6 +94,7 @@ export function useDuoRoom<S>(prefix: string, handlers: Handlers<S>) {
     let timer = 0;
     client.on("connect", () => {
       window.clearInterval(timer);
+      setNotice(n => n === WAKING ? "Connected. Create a private room or enter a friend’s code." : n);
       sample(); window.setTimeout(sample, 250); window.setTimeout(sample, 600);
       timer = window.setInterval(sample, 2000);
       if (!code.current) return;
@@ -104,7 +108,8 @@ export function useDuoRoom<S>(prefix: string, handlers: Handlers<S>) {
       window.clearInterval(timer);
       if (code.current) setStatus("reconnecting");
     });
-    client.on("connect_error", () => { if (!code.current) setNotice("Can’t reach the arcade server. Please try again in a moment."); });
+    // socket.io keeps retrying; a sleeping server usually answers within a minute
+    client.on("connect_error", () => { if (!code.current) setNotice(WAKING); });
     client.on(`${prefix}:room`, applyRoom);
     client.on(`${prefix}:hostChanged`, () => { setSeatBoth(0); setNotice("Your friend left. Share the code to invite someone new."); });
     client.on(`${prefix}:start`, () => { setPhase("playing"); handlersRef.current.onStart?.(); });
